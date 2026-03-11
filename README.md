@@ -386,11 +386,6 @@ This project is part of the Claude Code Skills Lab.
 
 ---
 
-## 🎓 Learning Resources
-
-- [Python AST Module](https://docs.python.org/3/library/ast.html) - For more advanced code analysis
-- [Git Log Documentation](https://git-scm.com/docs/git-log) - Understanding commit analysis
-- [Python Type Hints](https://docs.python.org/3/library/typing.html) - For better contract validation
 
 ---
 
