@@ -41,16 +41,7 @@ Monitors Git history and generates "Today I Learned" documentation for complex c
 
 ---
 
-## 🚀 Getting Started
 
-### Installation
-
-```bash
-# Clone or navigate to the project directory
-cd /home/waleed/Documents/claude-code-skills-lab-main/all_maintenance_skills/python_skills
-
-# Install required dependencies (if any)
-pip install -r requirements.txt  # (optional, if available)
 ```
 
 ### Requirements
