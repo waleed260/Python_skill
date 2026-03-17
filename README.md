@@ -352,11 +352,7 @@ reports = validator.validate_multiple_contracts(contracts)
 - Ensure the file path is correct
 - Check that the function is at module level (not nested)
 
----
-
-## 📝 Examples
-
-See `test_python_skills.py` for complete working examples of all three skills.
+-
 
 ---
 
