@@ -366,3 +366,42 @@ class TilSkill:
 
         print("TIL entry generated successfully!")
         return True
+
+    def get_recent_tils(self, limit: int = 5) -> List[TilEntry]:
+        """
+        Gets recent TIL entries
+        """
+        if not os.path.exists(self.til_file_path):
+            return []
+
+        with open(self.til_file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        entries = []
+        import re
+
+        # Simple parsing of TIL.md entries
+        entry_pattern = r'## (\d{4}-\d{2}-\d{2}): (.+?)\n\*\*Complexity Score:\*\* ([\d.]+)\/10\n\*\*Summary:\*\* (.+?)\n\*\*Tags:\*\* (.+?)\n\*\*Code Example:\*\*\n```(?:\w+)?\n([\s\S]*?)\n```\n---'
+
+        matches = re.findall(entry_pattern, content)
+
+        for match in matches[:limit]:
+            date, title, complexity, summary, tags_str, code_example = match
+            tags = [tag.strip() for tag in tags_str.split(',')]
+
+            entries.append(TilEntry(
+                date=date,
+                title=title,
+                summary=summary,
+                code_example=code_example,
+                tags=tags,
+                complexity=float(complexity)
+            ))
+
+        return entries
+
+# Example usage
+if __name__ == "__main__":
+    # til_skill = TilSkill('./my-til.md')
+    # til_skill.run_til_generation(24)
+    pass
