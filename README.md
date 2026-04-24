@@ -367,4 +367,22 @@ To extend or modify these skills:
 
 ---
 
+## 📄 License
 
+This project is part of the Claude Code Skills Lab.
+
+---
+
+
+---
+
+## ✨ Version History
+
+- **v1.0** - Initial release with three core maintenance skills
+  - Legacy Decoder Skill
+  - API Contract Validator Skill
+  - Self-Documenting TIL Skill
+
+---
+
+For questions or issues, refer to the test file (`test_python_skills.py`) for usage examples.
