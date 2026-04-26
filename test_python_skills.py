@@ -155,3 +155,44 @@ def fetch_user(user_id: str):
 
         # Try to run the TIL generation
         # Note: This requires Git to be initialized in the directory
+        try:
+            import subprocess
+
+            # Initialize git if not already done
+            try:
+                subprocess.run(['git', 'init'], check=True, capture_output=True)
+                subprocess.run(['git', 'config', 'user.name', '"Test User"'], check=True, capture_output=True)
+                subprocess.run(['git', 'config', 'user.email', '"test@example.com"'], check=True, capture_output=True)
+            except subprocess.CalledProcessError:
+                # Git might already be initialized
+                pass
+
+            # Create a test commit to work with
+            with open('./test_file_for_til_python.txt', 'w') as f:
+                f.write('Test content for Python TIL skill')
+
+            subprocess.run(['git', 'add', './test_file_for_til_python.txt'], check=True, capture_output=True)
+            subprocess.run(['git', 'commit', '-m', '"feat: Add complex algorithm for data processing"'], check=True, capture_output=True)
+
+            result = til_skill.run_til_generation(1)
+            print(f'   ✓ TIL generation completed: {result}')
+
+            # Show recent TILs
+            recent_tils = til_skill.get_recent_tils(2)
+            print(f'   - Recent TIL entries: {len(recent_tils)}')
+
+            # Clean up test file
+            os.remove('./test_file_for_til_python.txt')
+
+        except subprocess.CalledProcessError as git_error:
+            print(f'   ⚠ Skipping TIL test (Git error): {git_error}')
+        except FileNotFoundError:
+            print('   ⚠ Skipping TIL test (Git not installed or not in PATH)')
+
+    except Exception as e:
+        print(f'   ✗ TIL Skill test failed: {e}')
+
+    print('\n✓ All Python skill tests completed!')
+
+if __name__ == "__main__":
+    test_skills()
