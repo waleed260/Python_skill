@@ -355,3 +355,35 @@ reports = validator.validate_multiple_contracts(contracts)
 -
 
 ---
+
+## 🤝 Contributing
+
+To extend or modify these skills:
+
+1. **Add new side effect patterns** in `LegacyDecoderSkill._identify_side_effects()`
+2. **Add new mismatch types** in `ApiContractValidator._compare_contracts()`
+3. **Customize complexity scoring** in `TilSkill._calculate_complexity()`
+4. **Add new tag patterns** in `TilSkill._extract_tags()`
+
+---
+
+## 📄 License
+
+This project is part of the Claude Code Skills Lab.
+
+---
+
+
+---
+
+## ✨ Version History
+
+- **v1.0** - Initial release with three core maintenance skills
+  - Legacy Decoder Skill
+  - API Contract Validator Skill
+  - Self-Documenting TIL Skill
+
+---
+
+For questions or issues, refer to the test file (`test_python_skills.py`) for usage examples.
+
