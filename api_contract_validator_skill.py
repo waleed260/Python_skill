@@ -243,5 +243,33 @@ class ApiContractValidator:
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(report_content)
         print(f"Schema Drift Report generated at: {output_path}")
+  def validate_multiple_contracts(self, contracts: List[Dict]) -> List[ContractDriftReport]:
+        """
+        Validate multiple contracts at once
+        """
+        reports = []
 
+        for contract in contracts:
+            try:
+                report = self.validate_contract(
+                    contract['backend_type_path'],
+                    contract['frontend_fetch_path'],
+                    contract['type_name']
+                )
+                reports.append(report)
+            except Exception as e:
+                print(f"Failed to validate contract for {contract['type_name']}: {e}")
+
+        return reports
+
+# Example usage
+if __name__ == "__main__":
+    # validator = ApiContractValidator()
+    # report = validator.validate_contract(
+    #     './backend_types.py',
+    #     './frontend_api.py',
+    #     'User'
+    # )
+    # validator.generate_drift_report(report, './SCHEMA_DRIFT_REPORT.md')
+    pass
   
